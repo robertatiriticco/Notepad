@@ -4,19 +4,19 @@ import AddIcon from '@material-ui/icons/Add';
 import { amber } from "@material-ui/core/colors";
 
 
-function CreateArea(props) {
+function Create(props) {
 
   const yellowTheme = createMuiTheme({ palette: { primary: amber } })
 
   const [isExpanded, setExpanded] = useState(false);
-  
+
   const [note, setNote] = useState({
     title: "",
     content: ""
   });
 
   function handleChange(event) {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     setNote(prevValue => {
       return {
         ...prevValue,
@@ -25,7 +25,7 @@ function CreateArea(props) {
     });
   }
 
-  function submitNote(event){
+  function submitNote(event) {
     props.onAdd(note);
     setNote({
       title: "",
@@ -34,15 +34,15 @@ function CreateArea(props) {
     event.preventDefault();
   }
 
-  function expande(){
+  function expande() {
     setExpanded(true);
   }
 
   return (
     <div>
       <form className="create-note">
-        {isExpanded === true && 
-        (<input
+        {isExpanded &&
+          (<input
             onChange={handleChange}
             name="title"
             placeholder="Title"
@@ -53,8 +53,8 @@ function CreateArea(props) {
           onChange={handleChange}
           onClick={expande}
           name="content"
-          placeholder="Take a note..."
-          rows={isExpanded === true ? 3 : 1}
+          placeholder="Write here..."
+          rows={isExpanded ? 3 : 1}
           value={note.content}
         />
         <ThemeProvider theme={yellowTheme}>
@@ -70,4 +70,4 @@ function CreateArea(props) {
   );
 }
 
-export default CreateArea;
+export default Create;

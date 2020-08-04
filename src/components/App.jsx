@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import Note from "./Note";
-import CreateArea from "./CreateArea";
+import Create from "./Create";
 
 function App() {
 
@@ -28,7 +28,7 @@ function App() {
       <Header />
       <div className="notes-collection">
 
-      <CreateArea 
+      <Create 
         onAdd={addNote}
       />
         {notes.map((noteItem, index) => {
